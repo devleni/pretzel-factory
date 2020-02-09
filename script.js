@@ -1,18 +1,39 @@
 // Selectors
-const counterTotal = document.querySelector("#counter-total");
+const counterStock = document.querySelector("#counter-stock");
+const counterBalance = document.querySelector("#counter-balance");
 const counterWorkers = document.querySelector("#counter-workers");
+
+const valuePretzel = document.querySelector("#value-pretzel");
+
 const buttonPretzel = document.querySelector("#button-pretzel");
 const buttonSmallBatch = document.querySelector("#button-small-batch");
 const buttonBigBatch = document.querySelector("#button-big-batch");
 const buttonHireWorker = document.querySelector("#hire-worker");
+
 const elementSmallBatch = document.querySelector("#element-small-batch");
 const elementBigBatch = document.querySelector("#element-big-batch");
 const elementHireWorker = document.querySelector("#element-hire-worker");
 
 
 // Counters
-let numPretzels = parseInt(counterTotal.innerText);
+let numPretzels = parseInt(counterStock.innerText);
+let numValue = parseInt(counterBalance.innerText);
 let numWorkers = parseInt(counterWorkers.innerText);
+
+
+// Value per Pretzel
+let min = 0.8;
+let max = 1.2;
+
+const getPretzelValue = () => {
+  setInterval(() => {
+    currentValue = Math.random() * (max - min) + min;
+    currentValue = currentValue.toFixed(2);
+    valuePretzel.innerText = currentValue;
+  }, 5000);
+};
+
+getPretzelValue();
 
 
 // Unlocks
@@ -32,19 +53,19 @@ const unlock = () => {
 // Bakery Functions
 const bakePretzel = () => {
   numPretzels += 1;
-  counterTotal.innerText = numPretzels;
+  counterStock.innerText = numPretzels;
   unlock();
 };
 
 const bakeSmallBatch = () => {
   numPretzels += 5;
-  counterTotal.innerText = numPretzels;
+  counterStock.innerText = numPretzels;
   unlock();
 };
 
 const bakeBigBatch = () => {
   numPretzels += 10;
-  counterTotal.innerText = numPretzels;
+  counterStock.innerText = numPretzels;
   unlock();
 };
 
@@ -58,7 +79,7 @@ buttonBigBatch.addEventListener("click", bakeBigBatch);
 const hireWorker = () => {
   if (numPretzels >= 1000) {
     numPretzels -= 1000;
-    counterTotal.innerText = numPretzels;
+    counterStock.innerText = numPretzels;
     numWorkers += 1;
     counterWorkers.innerText = numWorkers;
     setInterval(() => {bakePretzel()}, 5000);

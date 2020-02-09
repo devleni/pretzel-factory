@@ -15,10 +15,28 @@
   <body>
     <div class="container">
       <h1 class="mt-5">🥨Pretzel Factory🥨</h1>
-      <p class="mt-5 border border-dark rounded">Total: <span id="counter-total">0</span> Pretzels</p>
+    </div>
+
+    <div class="container mt-5 pb-3 border border-dark rounded">
+      <div class="row">
+        <div class="col-sm">
+          <h2 class="mt-2">Stock</h2>
+          <p><span id="counter-stock">0</span> Pretzels</p>
+        </div>
+        <div class="col-sm">
+          <h2 class="mt-2">Value</h2>
+          <p>$<span id="value-pretzel">1</span> per Pretzel</p>
+          <button class="btn btn-primary">Sell Stock</button>
+        </div>
+        <div class="col-sm">
+          <h2 class="mt-2">Balance</h2>
+          <p>$<span id="counter-balance">0</span></p>
+        </div>
+      </div>
+
     </div>
   
-    <div class="container border border-dark rounded">
+    <div class="container mt-5 border border-dark rounded">
       <h2>Bakery</h2>
         <div class="row">
           <div class="col-sm">
@@ -38,7 +56,7 @@
     </div>
 
 
-    <div class="container mt-3 border border-dark rounded hide" id="element-hire-worker">
+    <div class="container mt-5 border border-dark rounded hide" id="element-hire-worker">
       <h2>Human Ressources</h2>
       <span id="counter-workers">0</span>
       <br>
