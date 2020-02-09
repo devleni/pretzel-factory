@@ -25,8 +25,11 @@
         </div>
         <div class="col-sm">
           <h2 class="mt-2">Value</h2>
-          <p>$<span id="value-pretzel">1</span> per Pretzel</p>
-          <button class="btn btn-primary">Sell Stock</button>
+          <p>
+            $<span id="value-pretzel">1.00</span> per Pretzel<br>
+            (market value fluctuates)
+          </p>
+          <button class="btn btn-primary" id="button-sell">Sell Stock</button>
         </div>
         <div class="col-sm">
           <h2 class="mt-2">Balance</h2>
@@ -39,20 +42,21 @@
     <div class="container mt-5 border border-dark rounded">
       <h2>Bakery</h2>
         <div class="row">
-          <div class="col-sm">
+          <div class="col-sm" id="element-bake-pretzel">
             <button class="btn btn-primary" id="button-pretzel">Bake Pretzel</button>
             <p>Bakes 1 Pretzel</p>
           </div>
+          <div class="col-sm hide" id="element-upgrade-bakery">
+            <button class="btn btn-primary" id="button-upgrade-bakery">Upgrade Bakery</button>
+            <p>Upgrade Bakery to 5 Pretzels<br>
+               Cost: $200
+            </p>
+          </div>
           <div class="col-sm hide" id="element-small-batch">
             <button class="btn btn-primary" id="button-small-batch">Bake Small Batch</button>
-            <p>Bakes 5 Pretzels</p>
-          </div>
-          <div class="col-sm hide" id="element-big-batch">
-            <button class="btn btn-primary" id="button-big-batch">Bake Big Batch</button>
-            <p>Bake 10 Pretzels</p>
+            <p>Bake 5 Pretzels</p>
           </div>
         </div>
-
     </div>
 
 
@@ -62,7 +66,7 @@
       <br>
       <button class="btn btn-primary" id="hire-worker">Hire Worker</button>
       <p>Hires 1 Worker<br>
-        Cost: 1000 Pretzels<br>
+        Cost: $500<br>
         Bakes 1 Pretzel every 5 seconds.</p>
     </div>
 
