@@ -1,4 +1,7 @@
 // Selectors
+const addUsernameInput = document.querySelector("#add-username-input");
+const displayUsername = document.querySelector("#display-username");
+
 const counterStock = document.querySelector("#counter-stock");
 const counterBalance = document.querySelector("#counter-balance");
 const counterWorkers = document.querySelector("#counter-workers");
@@ -22,12 +25,14 @@ const elementRaise = document.querySelector("#element-raise");
 
 const hrUnlockNote = document.querySelector("#hr-unlock-note");
 
+
 // Counters
 let numPretzels = parseInt(counterStock.innerText);
 let numBalance = parseInt(counterBalance.innerText);
 let numWorkers = parseInt(counterWorkers.innerText);
 let numWorkerSeconds = parseInt(counterWorkerSeconds.innerText);
 let numRaises = parseInt(counterRaises.innerText);
+
 
 // Unlocks
 const unlock = () => {
@@ -43,8 +48,25 @@ const unlock = () => {
   }
 };
 
+
 // Achievements
 let achievementUpgradeBakery = false ;
+
+
+// Add Username
+const addUsername = (e) => {
+  if(e.key === "Enter") {
+    const username = addUsernameInput.value;
+    const usernameElement = document.createElement("p");
+    usernameElement.innerText = `${username} (CEO)`;
+    displayUsername.appendChild(usernameElement);
+    addUsernameInput.remove();
+  };
+};
+
+// Add Username Event Handler
+addUsernameInput.addEventListener("keypress", addUsername);
+
 
 // Value per Pretzel
 let currentValue = 1.00;
