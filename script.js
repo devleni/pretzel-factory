@@ -76,7 +76,7 @@ let max = 1.3;
 const getPretzelValue = () => {
   setInterval(() => {
     currentValue = Math.random() * (max - min) + min;
-    currentValue = currentValue.toFixed(2);
+    currentValue = Math.round((currentValue + Number.EPSILON) * 100) / 100;
     valuePretzel.innerText = currentValue;
     return currentValue;
   }, 5000);
@@ -89,7 +89,7 @@ getPretzelValue();
 const sellStock = () => {
   let turnover = numPretzels * currentValue;
   numBalance += turnover;
-  counterBalance.innerText = numBalance;
+  counterBalance.innerText = Math.round((numBalance + Number.EPSILON) * 100) / 100;
   numPretzels = 0;
   counterStock.innerText = numPretzels;
   unlock();
@@ -108,7 +108,7 @@ const bakePretzel = () => {
 const upgradeBakery = () => {
   if (numBalance >= 50) {
     numBalance -= 50;
-    counterBalance.innerText = numBalance;
+    counterBalance.innerText = Math.round((numBalance + Number.EPSILON) * 100) / 100;
     elementSmallBatch.classList.remove("hide");
     elementUpgradeBakery.classList.add("hide");
     elementBakePretzel.classList.add("hide");
@@ -135,7 +135,7 @@ let workerSpeed = 5000;
 const hireWorker = () => {
   if (numBalance >= 100) {
     numBalance -= 100;
-    counterBalance.innerText = numBalance;
+    counterBalance.innerText = Math.round((numBalance + Number.EPSILON) * 100) / 100;
     numWorkers += 1;
     counterWorkers.innerText = numWorkers;
     setInterval(() => {bakePretzel()}, workerSpeed);
@@ -147,7 +147,7 @@ const hireWorker = () => {
 const giveRaise = () => {
   if (numBalance >= 200 && workerSpeed > 1000) {
     numBalance -= 200;
-    counterBalance.innerText = numBalance;
+    counterBalance.innerText = Math.round((numBalance + Number.EPSILON) * 100) / 100;
     numWorkerSeconds -= 1;
     counterWorkerSeconds.innerText = numWorkerSeconds;
     numRaises += 1;
