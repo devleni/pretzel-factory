@@ -49,7 +49,7 @@
           <div class="col-sm hide" id="element-upgrade-bakery">
             <button class="btn btn-primary" id="button-upgrade-bakery">Upgrade Bakery</button>
             <p>Upgrade Bakery to 5 Pretzels<br>
-               Cost: $200
+               Cost: $50
             </p>
           </div>
           <div class="col-sm hide" id="element-small-batch">
@@ -60,14 +60,33 @@
     </div>
 
 
-    <div class="container mt-5 border border-dark rounded hide" id="element-hire-worker">
+    <div class="container mt-5 border border-dark rounded">
       <h2>Human Ressources</h2>
-      <span id="counter-workers">0</span>
-      <br>
-      <button class="btn btn-primary" id="hire-worker">Hire Worker</button>
-      <p>Hires 1 Worker<br>
-        Cost: $500<br>
-        Bakes 1 Pretzel every 5 seconds.</p>
+      <p id="hr-unlock-note">Play Game to Unlock</p>
+        <row>
+          <div class="col-sm hide" id="element-hire-worker">
+            <span id="counter-workers">0</span>
+            <br>
+            <button class="btn btn-primary" id="hire-worker">Hire Worker</button>
+            <p>
+              Hires 1 Worker<br>
+              Cost: $100<br>
+              Bakes 1 Pretzel every <span id="counter-worker-seconds">5</span> seconds.
+            </p>
+          </div>
+          <div class="col-sm hide" id="element-raise">
+            <span id="counter-raises">0</span> (Max: 4)
+            <br>
+            <button class="btn btn-primary" id="give-raise">Give Raise</button>
+            <p>
+              Raise worker salary<br>
+              Cost: $200<br>
+              Workers bake faster
+            </p>
+          </div>
+
+        </row>
+      
     </div>
 
     <!-- Optional JavaScript -->

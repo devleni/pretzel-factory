@@ -2,6 +2,8 @@
 const counterStock = document.querySelector("#counter-stock");
 const counterBalance = document.querySelector("#counter-balance");
 const counterWorkers = document.querySelector("#counter-workers");
+const counterWorkerSeconds = document.querySelector("#counter-worker-seconds");
+const counterRaises = document.querySelector("#counter-raises");
 
 const valuePretzel = document.querySelector("#value-pretzel");
 
@@ -10,26 +12,34 @@ const buttonPretzel = document.querySelector("#button-pretzel");
 const buttonUpgradeBakery = document.querySelector("#button-upgrade-bakery");
 const buttonSmallBatch = document.querySelector("#button-small-batch");
 const buttonHireWorker = document.querySelector("#hire-worker");
+const buttonGiveRaise = document.querySelector("#give-raise");
 
 const elementBakePretzel = document.querySelector("#element-bake-pretzel");
 const elementUpgradeBakery = document.querySelector("#element-upgrade-bakery");
 const elementSmallBatch = document.querySelector("#element-small-batch");
 const elementHireWorker = document.querySelector("#element-hire-worker");
+const elementRaise = document.querySelector("#element-raise");
 
+const hrUnlockNote = document.querySelector("#hr-unlock-note");
 
 // Counters
 let numPretzels = parseInt(counterStock.innerText);
-let numWorkers = parseInt(counterWorkers.innerText);
 let numBalance = parseInt(counterBalance.innerText);
-
+let numWorkers = parseInt(counterWorkers.innerText);
+let numWorkerSeconds = parseInt(counterWorkerSeconds.innerText);
+let numRaises = parseInt(counterRaises.innerText);
 
 // Unlocks
 const unlock = () => {
   if (numBalance >= 50 && elementSmallBatch.classList.contains("hide") === true) {
     elementUpgradeBakery.classList.remove("hide");
   }
-  if (numBalance >= 300) {
+  if (numBalance >= 100) {
     elementHireWorker.classList.remove("hide");
+    hrUnlockNote.remove();
+  }
+  if (numBalance >= 200) {
+    elementRaise.classList.remove("hide");
   }
 };
 
@@ -74,8 +84,8 @@ const bakePretzel = () => {
 };
 
 const upgradeBakery = () => {
-  if (numBalance >= 200) {
-    numBalance -= 200;
+  if (numBalance >= 50) {
+    numBalance -= 50;
     counterBalance.innerText = numBalance;
     elementSmallBatch.classList.remove("hide");
     elementUpgradeBakery.classList.add("hide");
@@ -98,17 +108,37 @@ buttonSmallBatch.addEventListener("click", bakeSmallBatch);
 
 
 // Human Ressources Functions
+let workerSpeed = 5000;
+
 const hireWorker = () => {
-  if (numBalance >= 500) {
-    numBalance -= 500;
+  if (numBalance >= 100) {
+    numBalance -= 100;
     counterBalance.innerText = numBalance;
     numWorkers += 1;
     counterWorkers.innerText = numWorkers;
-    setInterval(() => {bakePretzel()}, 5000);
+    setInterval(() => {bakePretzel()}, workerSpeed);
   } else {
     alert("Not enough Ressources");
-  }
-}
+  };
+};
+
+const giveRaise = () => {
+  if (numBalance >= 200 && workerSpeed > 1000) {
+    numBalance -= 200;
+    counterBalance.innerText = numBalance;
+    numWorkerSeconds -= 1;
+    counterWorkerSeconds.innerText = numWorkerSeconds;
+    numRaises += 1;
+    counterRaises.innerText = numRaises;
+    workerSpeed -= 1000;
+    setInterval(() => {bakePretzel()}, workerSpeed);
+    alert("Workers get 1 second faster");
+    return workerSpeed;
+  } else {
+    alert("Not Available");
+  };
+};
 
 // Human Ressources Event Handlers
 buttonHireWorker.addEventListener("click", hireWorker);
+buttonGiveRaise.addEventListener("click", giveRaise);
